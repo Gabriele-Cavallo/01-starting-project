@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import TabButton from './TabButton.jsx';
 import { EXAMPLES } from '../data.js';
+import Section from './Section.jsx';
 
 export default function Examples(){
     const [ selectedTopic, setSelectedTopic ] = useState('');
@@ -21,13 +22,12 @@ export default function Examples(){
     // }
     
     return (
-    <section id="examples">
-        <h2>Examples</h2>
+    <Section id="examples" title='Examples'>
         <menu>
-        <TabButton isSelected={selectedTopic === 'components' ? true : false} onSelect={() => handleSelect('components')}>Components</TabButton>
-        <TabButton isSelected={selectedTopic === 'jsx' ? true : false} onSelect={() => handleSelect('jsx')}>JSX</TabButton>
-        <TabButton isSelected={selectedTopic === 'props' ? true : false} onSelect={() => handleSelect('props')}>Props</TabButton>
-        <TabButton isSelected={selectedTopic === 'state' ? true : false} onSelect={() => handleSelect('state')}>State</TabButton>
+        <TabButton isSelected={selectedTopic === 'components' ? true : false} onClick={() => handleSelect('components')}>Components</TabButton>
+        <TabButton isSelected={selectedTopic === 'jsx' ? true : false} onClick={() => handleSelect('jsx')}>JSX</TabButton>
+        <TabButton isSelected={selectedTopic === 'props' ? true : false} onClick={() => handleSelect('props')}>Props</TabButton>
+        <TabButton isSelected={selectedTopic === 'state' ? true : false} onClick={() => handleSelect('state')}>State</TabButton>
         </menu>
         {/* {selectedTopic === '' && <p>Please select a topic.</p>} Sintassi alternativa all'operatore ternario */}
         {selectedTopic !== '' ? <div id="tab-content">
@@ -38,6 +38,6 @@ export default function Examples(){
             </pre>
           </div> : <p>Please select a topic.</p>}
         {/* {tabContent} Rendering condizionale con variabile */}
-    </section>
+    </Section>
     )
 }
